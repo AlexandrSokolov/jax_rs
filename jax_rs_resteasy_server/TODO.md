@@ -6,3 +6,4 @@
 6. error processing
 - custom serialiation
 - information about context!
+- sse

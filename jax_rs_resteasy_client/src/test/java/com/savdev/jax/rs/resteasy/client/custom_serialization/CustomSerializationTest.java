@@ -88,10 +88,7 @@ public class CustomSerializationTest extends JaxRsProxyConfigBaseTest {
       Assert.fail("Must fail without custom date serializer");
     } catch (Exception e){
       Assert.assertEquals(ResponseProcessingException.class, e.getClass());
-      Assert.assertTrue(e.getMessage().contains(
-        String.format("Can not construct instance of %s from String value '%s'",
-          Date.class.getName(),
-          DATE_STRING)));
+      Assert.assertTrue(e.getMessage().contains(DATE_STRING));
     }
 
   }
