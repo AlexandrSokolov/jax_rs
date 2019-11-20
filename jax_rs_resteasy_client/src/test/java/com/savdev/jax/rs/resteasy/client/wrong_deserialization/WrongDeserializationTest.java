@@ -34,14 +34,8 @@ public class WrongDeserializationTest extends JaxRsProxyConfigBaseTest {
       Assert.fail("An exception is expected");
     } catch (Exception e){
       Assert.assertEquals(ResponseProcessingException.class, e.getClass());
-      Assert.assertEquals(ProcessingException.class, e.getCause().getClass());
-      Assert.assertEquals(JsonMappingException.class, e.getCause().getCause().getClass());
-      Assert.assertTrue(
-        e.getMessage().contains(
-          String.format(
-            "%s: Can not deserialize instance of %s",
-            JsonMappingException.class.getName(),
-            RestDto.class.getName())));
+      Assert.assertTrue(e.getMessage().contains("Cannot deserialize"));
+      Assert.assertTrue(e.getMessage().contains(RestDto.class.getName()));
     }
 
   }

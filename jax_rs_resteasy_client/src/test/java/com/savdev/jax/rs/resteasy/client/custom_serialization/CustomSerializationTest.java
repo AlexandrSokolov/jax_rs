@@ -80,16 +80,23 @@ public class CustomSerializationTest extends JaxRsProxyConfigBaseTest {
     //TODO compare hour, minute;
   }
 
+  /**
+   * New version of jackson can handle by default dates in the format: "2018-12-04T02:30Z"
+   *
+   * So it does not fail anymore
+   */
   @Test
   public void testErrorGet(){
-    try {
-      JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString());
-      proxyConfig.proxy(CustomSerializationApiClient.class).getDto();
-      Assert.fail("Must fail without custom date serializer");
-    } catch (Exception e){
-      Assert.assertEquals(ResponseProcessingException.class, e.getClass());
-      Assert.assertTrue(e.getMessage().contains(DATE_STRING));
-    }
+    JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString());
+    RestDto dto = proxyConfig.proxy(CustomSerializationApiClient.class).getDto();
+    Assert.assertNotNull(dto);
+    Date date = dto.getDate();
+    Assert.assertNotNull(date);
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
 
+    Assert.assertEquals(2018, calendar.get(Calendar.YEAR));
+    Assert.assertEquals(11, calendar.get(Calendar.MONTH));
+    Assert.assertEquals(04, calendar.get(Calendar.DATE));
   }
 }
