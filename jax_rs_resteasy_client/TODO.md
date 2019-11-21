@@ -1,12 +1,17 @@
 Test:
 
-- auth with signature
-  [Java HTTPS client certificate authentication](https://stackoverflow.com/questions/1666052/java-https-client-certificate-authentication)
-  https://avaldes.com/jax-rs-security-using-api-key-for-authorization/
 - zip response test it
 - jax rs form
 - write README.md based on tests
 - wildfly tests
+- auth with signature
+  [Everything About HTTPS and SSL (Java)](https://dzone.com/articles/ssl-in-java)
+  [Use Client Certificate Authentication With Java and RestTemplate](https://dzone.com/articles/use-client-certificate-authentication-with-java-an)
+  [Java mutual SSL authentication / 2-way SSL authentication](https://www.naschenweng.info/2018/02/01/java-mutual-ssl-authentication-2-way-ssl-authentication/)
+  [The Java EE 6 Tutorial, HTTPS Client Authentication](https://docs.oracle.com/cd/E19226-01/820-7627/bncbs/index.html)
+  [Java HTTPS client certificate authentication](https://stackoverflow.com/questions/1666052/java-https-client-certificate-authentication)
+  [Using SSL Authentication in Java Clients](https://docs.oracle.com/cd/E13222_01/wls/docs103/security/SSL_client.html)
+  https://avaldes.com/jax-rs-security-using-api-key-for-authorization/
 - forwarding from another response
 - in tests for server use filter for authentication, but not logic in method, see
   [Securing JAX-RS Endpoints with JWT](https://antoniogoncalves.org/2016/10/03/securing-jax-rs-endpoints-with-jwt/)
