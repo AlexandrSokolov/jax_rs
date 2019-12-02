@@ -2,6 +2,7 @@ package com.savdev.jax.rs.resteasy.client.error;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import com.savdev.jax.rs.resteasy.client.JaxRsExceptionsUtils;
 import com.savdev.jax.rs.resteasy.client.JaxRsProxyConfig;
 import com.savdev.jax.rs.resteasy.client.JaxRsProxyConfigBaseTest;
 import com.savdev.jax.rs.resteasy.client.error.api.ApiGetNotFound;
@@ -20,6 +21,7 @@ import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
 import java.util.Map;
 
+import static com.savdev.jax.rs.resteasy.client.error.api.ApiGetNotFoundWithTextBody.API_GET_NOT_FOUND_WITH_TEXT_BODY_PATH;
 import static com.savdev.jax.rs.resteasy.client.error.service.NotFoundWithJsonResponseService.ERROR_DTO;
 import static com.savdev.jax.rs.resteasy.client.error.service.NotFoundWithTextResponseService.NOT_FOUND_RESPONSE_BODY;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
@@ -68,6 +70,24 @@ public class JaxRsProxyConfigErrorTest extends JaxRsProxyConfigBaseTest {
         .orElseThrow(() -> new IllegalStateException("Not nullable instance of RequestResponseInfo is expected."));
       @SuppressWarnings("unchecked")
       Map<String, Object> asMap = new ObjectMapper().readValue(requestResponseInfo, Map.class);
+      Assert.assertEquals(NOT_FOUND.getStatusCode(), asMap.get("responseStatus"));
+      Assert.assertEquals(NOT_FOUND_RESPONSE_BODY, asMap.get("responseBody"));
+    }
+  }
+
+  @Test
+  public void testNotFoundWithTextResponseBodyViaJaxRsExceptionsUtils() throws IOException {
+    JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString());
+    try {
+      proxyConfig.proxy(ApiGetNotFoundWithTextBody.class).getDto();
+      Assert.fail("Exception must be thrown");
+    } catch (Exception e){
+      Assert.assertEquals(new NotFoundException().getMessage(), e.getMessage());
+      Assert.assertTrue(e instanceof WebApplicationException);
+      String requestResponseInfo = JaxRsExceptionsUtils.extractErrorFromResponse(e);
+      @SuppressWarnings("unchecked")
+      Map<String, Object> asMap = new ObjectMapper().readValue(requestResponseInfo, Map.class);
+      Assert.assertEquals(URI.toString() + API_GET_NOT_FOUND_WITH_TEXT_BODY_PATH, asMap.get("url"));
       Assert.assertEquals(NOT_FOUND.getStatusCode(), asMap.get("responseStatus"));
       Assert.assertEquals(NOT_FOUND_RESPONSE_BODY, asMap.get("responseBody"));
     }
