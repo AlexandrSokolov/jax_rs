@@ -7,19 +7,13 @@ import com.savdev.jax.rs.resteasy.client.dto.RestDto;
 import com.savdev.jax.rs.resteasy.client.provide_config.api.ProvideConfigApiClient;
 import com.savdev.jax.rs.resteasy.client.provide_config.api.ProxyConfigProvider;
 import com.savdev.jax.rs.resteasy.client.provide_config.service.ProvideConfigApiService;
-import com.savdev.jax.rs.resteasy.client.success.api.Api;
-import com.savdev.jax.rs.resteasy.client.success.service.ApiService;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.time.Instant;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.TimeZone;
 
 import static com.savdev.jax.rs.resteasy.client.JaxRsProxyConfig.DOMAIN_NOT_SET;
 
@@ -39,7 +33,7 @@ public class ProvideConfigTest extends JaxRsProxyConfigBaseTest {
   public void testGet(){
     JaxRsProxyConfig proxyConfig = ProxyConfigProvider.instance()
       .domain(URI.toString())
-      .clientRequestFilterSupplier(() ->
+      .clientRequestFilterAuthSupplier(() ->
         ClientRequestFilterFactory.basicAuthentication("someLogin", "somePwd"));
     RestDto dto = proxyConfig.proxy(ProvideConfigApiClient.class).getDto();
     Assert.assertNotNull(dto);
@@ -62,7 +56,7 @@ public class ProvideConfigTest extends JaxRsProxyConfigBaseTest {
   public void testPut(){
     JaxRsProxyConfig proxyConfig = ProxyConfigProvider.instance()
       .domain(URI.toString())
-      .clientRequestFilterSupplier(() ->
+      .clientRequestFilterAuthSupplier(() ->
         ClientRequestFilterFactory.basicAuthentication("someLogin", "somePwd"));
     RestDto original = RestDto.instance("fake name", Calendar.getInstance().getTime(), null);
     RestDto dto = proxyConfig.proxy(ProvideConfigApiClient.class).updateDto(original);

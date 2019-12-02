@@ -1,7 +1,5 @@
 Test:
 
-- debug mode based on stacktrace
-  or provide log filter for flexible package-based logging
 - jax rs form
 - write README.md based on tests
 - package documentation with examples

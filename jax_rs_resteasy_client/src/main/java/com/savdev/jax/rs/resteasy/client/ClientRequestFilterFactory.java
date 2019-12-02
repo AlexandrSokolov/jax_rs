@@ -69,7 +69,7 @@ public class ClientRequestFilterFactory {
         login,
         JaxRsProxyConfig
           .instance(domain)
-          .clientRequestFilterSupplier(() -> ClientRequestFilterFactory.basicAuthentication(login, password)),
+          .clientRequestFilterAuthSupplier(() -> ClientRequestFilterFactory.basicAuthentication(login, password)),
         authInterface,
         jwtAuthHeaderExtractor);
     } catch (ExecutionException e) {

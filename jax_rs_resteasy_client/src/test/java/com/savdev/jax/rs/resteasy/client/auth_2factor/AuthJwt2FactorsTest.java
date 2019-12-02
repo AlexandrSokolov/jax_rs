@@ -36,7 +36,7 @@ public class AuthJwt2FactorsTest extends JaxRsProxyConfigBaseTest {
       user,
       JaxRsProxyConfig
         .instance(domain)
-        .clientRequestFilterSupplier(() -> ClientRequestFilterFactory.basicAuthentication(user, password)),
+        .clientRequestFilterAuthSupplier(() -> ClientRequestFilterFactory.basicAuthentication(user, password)),
       AuthJwtApi.class,
       authJwtService -> authJwtService.authenticate().getJwtToken());
   };
@@ -48,7 +48,7 @@ public class AuthJwt2FactorsTest extends JaxRsProxyConfigBaseTest {
     return ClientRequestFilterFactory.jwt2factorAuthentication(
       JaxRsProxyConfig
         .instance(domain)
-        .clientRequestFilterSupplier(() -> ClientRequestFilterFactory.basicAuthentication(user, password)),
+        .clientRequestFilterAuthSupplier(() -> ClientRequestFilterFactory.basicAuthentication(user, password)),
       AuthJwtApi.class,
       authJwtService -> authJwtService.authenticate().getJwtToken());
   };
@@ -66,7 +66,7 @@ public class AuthJwt2FactorsTest extends JaxRsProxyConfigBaseTest {
   @Test
   public void testJwtThroughBasicAuthentication(){
     JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
-      .clientRequestFilterSupplier(() -> jwtThroughBasicAuthentication(
+      .clientRequestFilterAuthSupplier(() -> jwtThroughBasicAuthentication(
         URI.toString(),
         JWT_LOGIN,
         JWT_PASSWORD,
@@ -88,7 +88,7 @@ public class AuthJwt2FactorsTest extends JaxRsProxyConfigBaseTest {
   @Test
   public void testJwt2FactorAuthWithCache(){
     JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
-      .clientRequestFilterSupplier(() -> jwtPasswordBasedWithCache(URI.toString(), JWT_LOGIN, JWT_PASSWORD));
+      .clientRequestFilterAuthSupplier(() -> jwtPasswordBasedWithCache(URI.toString(), JWT_LOGIN, JWT_PASSWORD));
     //fist a request to auth at: ${AUTH_JWT_PATH}
     //then a requst to ${CLIENT_API_PATH}
     RestDto dto = proxyConfig.proxy(ClientApi.class).getDto();
@@ -105,7 +105,7 @@ public class AuthJwt2FactorsTest extends JaxRsProxyConfigBaseTest {
   @Test
   public void testJwt2FactorAuthWithoutCache(){
     JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
-      .clientRequestFilterSupplier(() -> jwtPasswordBasedWithoutCache(URI.toString(), JWT_LOGIN, JWT_PASSWORD));
+      .clientRequestFilterAuthSupplier(() -> jwtPasswordBasedWithoutCache(URI.toString(), JWT_LOGIN, JWT_PASSWORD));
     //fist a request to auth at: ${AUTH_JWT_PATH}
     //then a requst to ${CLIENT_API_PATH}
     RestDto dto = proxyConfig.proxy(ClientApi.class).getDto();
@@ -123,7 +123,7 @@ public class AuthJwt2FactorsTest extends JaxRsProxyConfigBaseTest {
   public void testJwt2FactorAuthError(){
     try {
       JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
-        .clientRequestFilterSupplier(() -> ClientRequestFilterFactory.basicAuthentication(JWT_LOGIN, JWT_PASSWORD));
+        .clientRequestFilterAuthSupplier(() -> ClientRequestFilterFactory.basicAuthentication(JWT_LOGIN, JWT_PASSWORD));
       proxyConfig.proxy(ClientApi.class).getDto();
       Assert.fail("'Not authenticated' error expected");
     } catch (Exception e){

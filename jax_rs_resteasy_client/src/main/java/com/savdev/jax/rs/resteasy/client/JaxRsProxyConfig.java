@@ -2,7 +2,6 @@ package com.savdev.jax.rs.resteasy.client;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -17,6 +16,7 @@ import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.ClientRequestFilter;
+import javax.ws.rs.client.ClientResponseFilter;
 import java.io.IOException;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -32,6 +32,8 @@ public class JaxRsProxyConfig {
 
   private Supplier<ClientRequestFilter> authFilterSupplier;
 
+  private Iterable<ClientResponseFilter> clientResponseFilters;
+
   public static JaxRsProxyConfig instance(String domain){
     return new JaxRsProxyConfig(domain);
   }
@@ -45,7 +47,13 @@ public class JaxRsProxyConfig {
     return this;
   }
 
-  public JaxRsProxyConfig clientRequestFilterSupplier(
+  public JaxRsProxyConfig clientResponseFilters(
+    final Iterable<ClientResponseFilter> clientRequestFilters){
+    this.clientResponseFilters = clientRequestFilters;
+    return this;
+  }
+
+  public JaxRsProxyConfig clientRequestFilterAuthSupplier(
     final Supplier<ClientRequestFilter> authFilterSupplier){
     this.authFilterSupplier = authFilterSupplier;
     return this;
@@ -114,6 +122,9 @@ public class JaxRsProxyConfig {
 
       if (authFilterSupplier != null) {
         target.register(authFilterSupplier.get());
+      }
+      if (clientResponseFilters != null){
+        clientResponseFilters.forEach(target::register);
       }
       target.register(ErrorHandlingFilter.class);
       target.register(RequestResponseLogFilter.class);

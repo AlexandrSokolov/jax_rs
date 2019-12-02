@@ -4,14 +4,11 @@ import com.savdev.jax.rs.resteasy.client.ClientRequestFilterFactory;
 import com.savdev.jax.rs.resteasy.client.JaxRsProxyConfig;
 import com.savdev.jax.rs.resteasy.client.JaxRsProxyConfigBaseTest;
 import com.savdev.jax.rs.resteasy.client.dto.RestDto;
-import com.savdev.jax.rs.resteasy.client.success.api.Api;
-import com.savdev.jax.rs.resteasy.client.success.service.ApiService;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.ws.rs.core.HttpHeaders;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Collections;
@@ -30,7 +27,7 @@ public class AuthBasicTest extends JaxRsProxyConfigBaseTest {
   @Test
   public void testBasicAuthWithFactory(){
     JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
-      .clientRequestFilterSupplier(() -> ClientRequestFilterFactory.basicAuthentication(
+      .clientRequestFilterAuthSupplier(() -> ClientRequestFilterFactory.basicAuthentication(
         LOGIN, PASSWORD));
     RestDto dto = proxyConfig.proxy(AuthBasicApi.class).getDto();
     Assert.assertEquals(AuthBasicService.AB_INSTANCE, dto);
@@ -39,7 +36,7 @@ public class AuthBasicTest extends JaxRsProxyConfigBaseTest {
   @Test
   public void testBasicAuthWithSupplier(){
     JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
-      .clientRequestFilterSupplier(() ->
+      .clientRequestFilterAuthSupplier(() ->
         (requestContext) -> requestContext.getHeaders().putSingle(
           HttpHeaders.AUTHORIZATION,
           Base64.getEncoder().encodeToString(
