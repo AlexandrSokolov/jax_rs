@@ -8,6 +8,7 @@ import org.junit.AfterClass;
 import javax.ws.rs.core.UriBuilder;
 import java.net.InetSocketAddress;
 import java.util.Collection;
+import java.util.Collections;
 
 public class JaxRsProxyConfigBaseTest {
 
@@ -22,7 +23,13 @@ public class JaxRsProxyConfigBaseTest {
   private static HttpServer server;
   private static HttpContextBuilder contextBuilder;
 
-  public static void setUpServer(Collection<Class<?>> types) throws Exception {
+  public static void setUpServer(final Collection<Class<?>> types) throws Exception {
+    setUpServer(types, Collections.emptyList());
+  }
+
+  public static void setUpServer(
+    final Collection<Class<?>> types,
+    final Collection<Class<?>> providerTypes) throws Exception {
     System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
     System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http", "DEBUG");
     System.setProperty("org.apache.commons.logging.simplelog.log.com.savdev.jax.rs.resteasy.client.filter", "DEBUG");
@@ -32,6 +39,7 @@ public class JaxRsProxyConfigBaseTest {
     contextBuilder = new HttpContextBuilder();
     // deploy server
     contextBuilder.getDeployment().getActualResourceClasses().addAll(types);
+    contextBuilder.getDeployment().getActualProviderClasses().addAll(providerTypes);
 
     final HttpContext context = contextBuilder.bind(server);
     // context.getAttributes().put("some.config.info", "42");

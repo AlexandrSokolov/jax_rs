@@ -138,7 +138,7 @@ public class ClientRequestFilterFactory {
 
     public BasicAuthentication(String username, String password) {
       try {
-        this.authHeader = Base64.getEncoder().encodeToString(
+        this.authHeader = "Basic " + Base64.getEncoder().encodeToString(
           String.format("%s:%s", username, password)
             .getBytes(StandardCharsets.UTF_8.name()));
       } catch (UnsupportedEncodingException e) {

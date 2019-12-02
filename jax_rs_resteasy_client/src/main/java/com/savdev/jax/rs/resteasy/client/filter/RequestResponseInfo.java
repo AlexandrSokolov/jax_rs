@@ -3,7 +3,7 @@ package com.savdev.jax.rs.resteasy.client.filter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.savdev.jax.rs.resteasy.client.jackson.JacksonProvider;
-import com.savdev.jax.rs.resteasy.plugins.interceptors.GZIPDecodingInterceptor;
+import org.jboss.resteasy.plugins.interceptors.GZIPDecodingInterceptor;
 
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientResponseContext;
@@ -248,8 +248,6 @@ public class RequestResponseInfo {
       return objectMapper.readTree(fixedString);
     } catch (JsonProcessingException e) {
       return fixedString;
-    } catch (IOException e) {
-      throw new IllegalStateException("Could not extract object from : " + bodyString, e);
     }
   }
 
