@@ -1,6 +1,5 @@
 Test:
 
-- write README.md based on tests
 - package documentation with examples
 - docs generation, which are visible in git
   swagger
