@@ -71,6 +71,7 @@ For instance 123 becomes "123.00". If you want to override it, create a custom s
 See [AuthBasicTest](src/test/java/com/savdev/jax/rs/resteasy/client/auth_basic/AuthBasicTest.java)
 
 * Two-factor authentication. First we get auth token via basic authenticaton, then, we use jwt token:
+
 How it might look for end-user:
 ```
     JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
@@ -96,7 +97,7 @@ See [AuthJwt2FactorsTest](src/test/java/com/savdev/jax/rs/resteasy/client/auth_2
 
 ##### 7. You can always adopt the default behaviour for your needs:
 Custom serializer and deserializer:
-'''
+```
     JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
       .addDeserializer((dateStr) -> {
         Instant instant = Instant.from(DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(dateStr));
@@ -105,7 +106,7 @@ Custom serializer and deserializer:
       .addSerializer( date ->
           DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(
             ZonedDateTime.ofInstant(date.toInstant(), TimeZone.getDefault().toZoneId())), Date.class);
-'''
+```
 See [CustomSerializationTest](src/test/java/com/savdev/jax/rs/resteasy/client/custom_serialization/CustomSerializationTest.java)
 
 Custom object mapper:
