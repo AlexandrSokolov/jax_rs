@@ -2,6 +2,7 @@ package com.savdev.jax.rs.resteasy.client.filter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Maps;
 import com.savdev.jax.rs.resteasy.client.jackson.JacksonProvider;
 import org.jboss.resteasy.plugins.interceptors.GZIPDecodingInterceptor;
 
@@ -146,7 +147,10 @@ public class RequestResponseInfo {
         .url(this.url)
         .httpMethod(this.httpMethod)
         .requestHeaders(filteredRequestHeaders)
-        .requestBody(this.requestBody)
+        .requestBody(
+          this.requestBody instanceof Form
+            ? formToMap((Form) this.requestBody)
+            : this.requestBody)
         .responseStatus(this.responseStatus)
         .responseHeaders(filteredResponseHeaders)
         .responseBody(this.responseBody)
@@ -159,7 +163,10 @@ public class RequestResponseInfo {
           .filter(entry -> !HttpHeaders.AUTHORIZATION.equals(entry.getKey()))
           .collect(toMap(Map.Entry::getKey, Map.Entry::getValue)))
         .add("Request Body = " +
-          ( requestBody == null ? NO_REQUEST_BODY : requestBody ))
+          ( requestBody == null ? NO_REQUEST_BODY :
+            this.requestBody instanceof Form
+              ? formToMap((Form) this.requestBody)
+              : this.requestBody))
         .add("Response Status=" + responseStatus)
         .add("Response Headers=" + responseHeaders
           .entrySet().stream()
@@ -273,22 +280,23 @@ public class RequestResponseInfo {
     return stream;
   }
 
-  private static String stringify(Form form){
-    String original = "Original form: " + System.lineSeparator()
-      + form.asMap().entrySet().stream().map(key2list ->
-      key2list.getKey() + "=" + String.join(",", key2list.getValue()))
-      .collect(Collectors.joining("&"));
-    String encoded = "URL encoded form sent to server: " + System.lineSeparator()
-      + form.asMap().entrySet().stream().map(key2list -> {
-      try {
-        return key2list.getKey() + "=" + URLEncoder.encode(
-          String.join(",", key2list.getValue()),
-          StandardCharsets.UTF_8.toString());
-      } catch (Exception e) {
-        throw new IllegalStateException(e);
-      }})
-      .collect(Collectors.joining("&"));
-    return original + System.lineSeparator() + encoded;
+  private static Map<String, String> formToMap(Form form){
+    Map<String, String> formAsMap = Maps.newLinkedHashMap();
+    formAsMap.put("original form",
+      form.asMap().entrySet().stream().map(key2list ->
+        key2list.getKey() + "=" + String.join(",", key2list.getValue()))
+        .collect(Collectors.joining("&")));
+    formAsMap.put("url encoded",
+      form.asMap().entrySet().stream().map(key2list -> {
+        try {
+          return key2list.getKey() + "=" + URLEncoder.encode(
+            String.join(",", key2list.getValue()),
+            StandardCharsets.UTF_8.toString());
+        } catch (Exception e) {
+          throw new IllegalStateException(e);
+        }})
+        .collect(Collectors.joining("&")));
+    return formAsMap;
   }
 
   private static RequestResponseInfoBuilder builder(){

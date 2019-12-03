@@ -1,6 +1,5 @@
 Test:
 
-- jax rs form
 - write README.md based on tests
 - package documentation with examples
 - docs generation, which are visible in git
