@@ -20,5 +20,24 @@
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+
+    <!-- TEST SCOPE:-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.savdev.jax.rs.resteasy.client</groupId>
+      <artifactId>resteasy_client</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 </project>

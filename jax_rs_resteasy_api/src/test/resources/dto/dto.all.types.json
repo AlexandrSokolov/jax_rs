@@ -1,0 +1,14 @@
+{
+  "stringValue" : "test string value",
+  "intValue" : 100,
+  "longValue" : 200,
+  "floatValue" : 100.05,
+  "doubleValue" : 110.05,
+  "bigDecimalValue" : 220.000777,
+  "charObjectValue" : "B",
+  "charPrimitiveValue" : "a",
+  "javaDateValue" : 1589106234000,
+  "sqlDateValue" : 1594195394000,
+  "booleanPrimitiveValue" : true,
+  "booleanObjectValue" : false
+}

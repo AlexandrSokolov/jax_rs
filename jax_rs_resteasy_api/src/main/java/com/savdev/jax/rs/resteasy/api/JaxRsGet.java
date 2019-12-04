@@ -1,6 +1,6 @@
 package com.savdev.jax.rs.resteasy.api;
 
-import com.savdev.jax.rs.resteasy.dto.JaxRsDto;
+import com.savdev.jax.rs.resteasy.dto.DtoGettersSettersWithoutJackson;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,5 +21,5 @@ public interface JaxRsGet {
    */
   @GET
   @Path("{id : \\d+}") //support digit only
-  JaxRsDto findById(long id);
+  DtoGettersSettersWithoutJackson findById(long id);
 }

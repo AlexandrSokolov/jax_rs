@@ -1,9 +1,6 @@
-# dto with all java types
-# unit tests
 # dto with enum
-# factory method for dto
-# dto without gettes/setters, only with builder 
-# dto with explicit constructor for all fields
+https://www.baeldung.com/jackson-serialize-enums
+https://stackoverflow.com/questions/12468764/jackson-enum-serializing-and-deserializer
 
 # api get, server
 # api post, options, server
@@ -13,4 +10,8 @@
 # api head, server
 # api option, server
 
-# caching, options
+- package documentation with examples
+- docs generation, which are visible in git
+  swagger
+https://github.com/docker/labs/blob/master/developer-tools/java/chapters/ch02-basic-concepts.adoc
+

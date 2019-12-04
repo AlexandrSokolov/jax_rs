@@ -10,6 +10,7 @@
 - information about context!
 - [Best practice for REST token-based authentication with JAX-RS and Jersey](https://stackoverflow.com/questions/26777083/best-practice-for-rest-token-based-authentication-with-jax-rs-and-jersey)
 - sse
+- debug mode via sse and browser
 - [The Java EE 6 Tutorial, Form-Based Authentication](https://docs.oracle.com/cd/E19226-01/820-7627/bncbq/index.html)
 - [The Java EE 6 Tutorial, HTTP Basic Authentication](https://docs.oracle.com/cd/E19226-01/820-7627/bncbo/index.html)
 - [The Java EE 6 Tutorial, Digest Authentication](https://docs.oracle.com/cd/E19226-01/820-7627/bncbw/index.html)
@@ -18,3 +19,15 @@
 - [The Java EE 6 Tutorial, Using Message Security with Web Applications](https://docs.oracle.com/cd/E19226-01/820-7627/gjiou/index.html)
 - [The Java EE 6 Tutorial, Examples: Securing Web Applications](https://docs.oracle.com/cd/E19226-01/820-7627/bncbx/index.html)
 - [gzip via resteasy annotation](https://docs.jboss.org/resteasy/docs/2.0.0.GA/userguide/html/gzip.html)
+- wildfly tests
+- auth with signature
+  [Everything About HTTPS and SSL (Java)](https://dzone.com/articles/ssl-in-java)
+  [Use Client Certificate Authentication With Java and RestTemplate](https://dzone.com/articles/use-client-certificate-authentication-with-java-an)
+  [Java mutual SSL authentication / 2-way SSL authentication](https://www.naschenweng.info/2018/02/01/java-mutual-ssl-authentication-2-way-ssl-authentication/)
+  [The Java EE 6 Tutorial, HTTPS Client Authentication](https://docs.oracle.com/cd/E19226-01/820-7627/bncbs/index.html)
+  [Java HTTPS client certificate authentication](https://stackoverflow.com/questions/1666052/java-https-client-certificate-authentication)
+  [Using SSL Authentication in Java Clients](https://docs.oracle.com/cd/E13222_01/wls/docs103/security/SSL_client.html)
+  https://avaldes.com/jax-rs-security-using-api-key-for-authorization/
+- wildfly light to start it FROM maven having only war file
+- remove deprecated jax-rs based projects  
+# caching, options
