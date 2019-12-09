@@ -1,4 +1,4 @@
-package com.savdev.jax.rs.resteasy.dto.deserialization;
+package com.savdev.jax.rs.resteasy.dto.with.jackson.deserialization;
 
 import org.junit.Assert;
 import org.junit.Test;

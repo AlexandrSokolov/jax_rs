@@ -1,9 +1,8 @@
-package com.savdev.jax.rs.resteasy.dto.serialization;
+package com.savdev.jax.rs.resteasy.dto.without.jackson.deserialization;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.savdev.jax.rs.resteasy.client.filter.RequestResponseInfo;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,31 +11,33 @@ import java.text.ParseException;
 
 import static com.savdev.jax.rs.resteasy.dto.TestUtils.DATE_FORMAT;
 import static com.savdev.jax.rs.resteasy.dto.TestUtils.JSON_FILE;
-import static com.savdev.jax.rs.resteasy.dto.TestUtils.readTestFile;
 
-public class DtoConstructor4RequestWithoutJacksonTest {
-
+public class DtoDefaultConstructor4ResponseTest {
 
   /**
-   * Convert object to String and compare with file content from the file
+   * Parse a string from the file using Object Mapper,
    *
-   * This check is usefull for requests, when we need to make sure, that correct values will be sent to server
+   * check the real object is according to what we expect when parse response
+   *
+   * This check is useful for responds
    *
    * @throws Exception
    */
   @Test
-  public void testFromDto2String4Requests() throws Exception {
-    //we customize object mapper:
+  public void testFromString2Dto4Response() throws Exception {
+
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
     Assert.assertEquals(
-      readTestFile(JSON_FILE, DtoConstructor4RequestWithoutJacksonTest.class),
-      RequestResponseInfo.stringify(objectMapper, instance()));
+      instance(),
+      objectMapper.readValue(
+        DtoDefaultConstructor4ResponseTest.class.getResourceAsStream(JSON_FILE),
+        DtoDefaultConstructor4ResponseWithoutJackson.class));
   }
 
-  private DtoConstructor4RequestWithoutJackson instance() throws ParseException {
-    return new DtoConstructor4RequestWithoutJackson(
+  private DtoDefaultConstructor4ResponseWithoutJackson instance() throws ParseException {
+    return new DtoDefaultConstructor4ResponseWithoutJackson(
       "test string value",
       100,
       200L,

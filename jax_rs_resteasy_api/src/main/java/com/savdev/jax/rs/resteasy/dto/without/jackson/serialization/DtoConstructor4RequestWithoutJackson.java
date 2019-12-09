@@ -1,11 +1,23 @@
-package com.savdev.jax.rs.resteasy.dto.deserialization;
+package com.savdev.jax.rs.resteasy.dto.without.jackson.serialization;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
-
-public class DtoDefaultConstructor4ResponseWithoutJackson {
+/**
+ * You are responsible for instance creation.
+ * Jackson needs only to extract field values to serialize it into string
+ *
+ * Without getters you can either set annotation:
+ * @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+ *
+ * Or update the mapper:
+ *
+ * ObjectMapper objectMapper = new ObjectMapper();
+ * objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+ *
+ */
+public class DtoConstructor4RequestWithoutJackson {
 
   private String stringValue;
 
@@ -25,11 +37,7 @@ public class DtoDefaultConstructor4ResponseWithoutJackson {
   private boolean booleanPrimitiveValue;
   private Boolean booleanObjectValue;
 
-  public DtoDefaultConstructor4ResponseWithoutJackson(){
-    //do nothing
-  }
-
-  public DtoDefaultConstructor4ResponseWithoutJackson(
+  public DtoConstructor4RequestWithoutJackson(
     String stringValue,
     int intValue,
     long longValue,
@@ -60,7 +68,7 @@ public class DtoDefaultConstructor4ResponseWithoutJackson {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    DtoDefaultConstructor4ResponseWithoutJackson that = (DtoDefaultConstructor4ResponseWithoutJackson) o;
+    DtoConstructor4RequestWithoutJackson that = (DtoConstructor4RequestWithoutJackson) o;
     return intValue == that.intValue &&
       longValue == that.longValue &&
       Float.compare(that.floatValue, floatValue) == 0 &&

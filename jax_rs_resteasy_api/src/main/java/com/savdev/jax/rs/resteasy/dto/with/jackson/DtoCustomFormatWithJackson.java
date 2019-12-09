@@ -1,13 +1,20 @@
-package com.savdev.jax.rs.resteasy.dto;
+package com.savdev.jax.rs.resteasy.dto.with.jackson;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.savdev.jax.rs.resteasy.serializer.MoneySerializer;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-public class DtoCustomFormatWithoutJackson {
+public class DtoCustomFormatWithJackson {
 
+  @JsonSerialize(using = MoneySerializer.class)
   BigDecimal bigDecimalValue;
+
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   Date javaUtilDateValue;
 
   public BigDecimal getBigDecimalValue() {
@@ -30,7 +37,7 @@ public class DtoCustomFormatWithoutJackson {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    DtoCustomFormatWithoutJackson that = (DtoCustomFormatWithoutJackson) o;
+    DtoCustomFormatWithJackson that = (DtoCustomFormatWithJackson) o;
     Calendar javaUtilDateValueC = Calendar.getInstance();
     javaUtilDateValueC.setTime(javaUtilDateValue);
     Calendar thatJavaUtilDateValueC = Calendar.getInstance();

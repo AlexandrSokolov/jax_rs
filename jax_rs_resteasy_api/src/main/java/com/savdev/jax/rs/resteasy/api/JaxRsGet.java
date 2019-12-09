@@ -1,6 +1,6 @@
 package com.savdev.jax.rs.resteasy.api;
 
-import com.savdev.jax.rs.resteasy.dto.DtoGettersSettersWithoutJackson;
+import com.savdev.jax.rs.resteasy.dto.without.jackson.DtoGettersSettersWithoutJackson;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

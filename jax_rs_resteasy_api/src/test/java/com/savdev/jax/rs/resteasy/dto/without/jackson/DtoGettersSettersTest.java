@@ -1,4 +1,4 @@
-package com.savdev.jax.rs.resteasy.dto;
+package com.savdev.jax.rs.resteasy.dto.without.jackson;
 
 import com.savdev.jax.rs.resteasy.client.filter.RequestResponseInfo;
 import org.junit.Assert;

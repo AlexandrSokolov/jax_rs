@@ -1,7 +1,9 @@
 # dto with enum
 https://www.baeldung.com/jackson-serialize-enums
 https://stackoverflow.com/questions/12468764/jackson-enum-serializing-and-deserializer
-
+# documentation, difference between:
+- rest/response
+- with/without jackson annotations on dto
 # api get, server
 # api post, options, server
 # api put, options, server

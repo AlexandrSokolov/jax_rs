@@ -1,4 +1,4 @@
-package com.savdev.jax.rs.resteasy.dto.serialization;
+package com.savdev.jax.rs.resteasy.dto.without.jackson.serialization;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

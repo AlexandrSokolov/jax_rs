@@ -1,4 +1,4 @@
-package com.savdev.jax.rs.resteasy.dto.serialization;
+package com.savdev.jax.rs.resteasy.dto.without.jackson.serialization;
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.savdev.jax.rs.resteasy.dto.serialization;
+package com.savdev.jax.rs.resteasy.dto.with.jackson.serialization;
 
 import com.savdev.jax.rs.resteasy.client.filter.RequestResponseInfo;
 import org.junit.Assert;

@@ -1,4 +1,6 @@
-package com.savdev.jax.rs.resteasy.dto.serialization;
+package com.savdev.jax.rs.resteasy.dto.with.jackson.serialization;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -17,7 +19,8 @@ import java.util.Objects;
  * objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
  *
  */
-public class DtoConstructor4RequestWithoutJackson {
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+public class DtoConstructor4RequestWithJackson {
 
   private String stringValue;
 
@@ -37,7 +40,7 @@ public class DtoConstructor4RequestWithoutJackson {
   private boolean booleanPrimitiveValue;
   private Boolean booleanObjectValue;
 
-  public DtoConstructor4RequestWithoutJackson(
+  public DtoConstructor4RequestWithJackson(
     String stringValue,
     int intValue,
     long longValue,
@@ -68,7 +71,7 @@ public class DtoConstructor4RequestWithoutJackson {
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    DtoConstructor4RequestWithoutJackson that = (DtoConstructor4RequestWithoutJackson) o;
+    DtoConstructor4RequestWithJackson that = (DtoConstructor4RequestWithJackson) o;
     return intValue == that.intValue &&
       longValue == that.longValue &&
       Float.compare(that.floatValue, floatValue) == 0 &&
