@@ -2,7 +2,7 @@ package com.savdev.jax.rs.resteasy.dto.with_enum.serialization;
 
 import com.savdev.jax.rs.resteasy.client.filter.RequestResponseInfo;
 import com.savdev.jax.rs.resteasy.dto.with_enum.serialization.dto.DtoEnumSpecificField;
-import com.savdev.jax.rs.resteasy.dto.with_enum.serialization.enums.DistanceEnumSpecificField;
+import com.savdev.jax.rs.resteasy.dto.with_enum.DistanceEnumSpecificField;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,7 +11,7 @@ import static com.savdev.jax.rs.resteasy.dto.TestUtils.readTestFile;
 
 public class DtoEnumSpecificFieldTest {
 
-  public static final String ENUM_SPECIFIC_FIELD_FILE = "dto/enum.specific.field.json";
+  public static final String ENUM_SPECIFIC_FIELD_FILE = "/dto/enum.specific.field.json";
 
   @Test
   public void testEnumAsJsonObjectRequest(){

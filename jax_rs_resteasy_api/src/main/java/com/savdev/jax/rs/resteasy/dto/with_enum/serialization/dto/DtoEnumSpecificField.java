@@ -1,6 +1,6 @@
 package com.savdev.jax.rs.resteasy.dto.with_enum.serialization.dto;
 
-import com.savdev.jax.rs.resteasy.dto.with_enum.serialization.enums.DistanceEnumSpecificField;
+import com.savdev.jax.rs.resteasy.dto.with_enum.DistanceEnumSpecificField;
 
 public class DtoEnumSpecificField {
 

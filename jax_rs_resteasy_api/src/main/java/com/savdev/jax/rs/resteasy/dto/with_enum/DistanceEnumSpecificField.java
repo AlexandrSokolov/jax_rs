@@ -1,4 +1,4 @@
-package com.savdev.jax.rs.resteasy.dto.with_enum.serialization.enums;
+package com.savdev.jax.rs.resteasy.dto.with_enum;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
