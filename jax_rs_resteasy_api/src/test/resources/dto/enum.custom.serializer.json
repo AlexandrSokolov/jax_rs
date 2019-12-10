@@ -1,0 +1,7 @@
+{
+  "enumAsPlainJava" : {
+    "name" : "KILOMETER",
+    "unit" : "km",
+    "meters" : 1000.0
+  }
+}

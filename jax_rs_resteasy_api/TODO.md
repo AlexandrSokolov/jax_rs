@@ -1,9 +1,14 @@
-# dto with enum
+# Deserializing JSON to Enum
 https://www.baeldung.com/jackson-serialize-enums
 https://stackoverflow.com/questions/12468764/jackson-enum-serializing-and-deserializer
+# DtoWithBuilderWithoutJackson 
+- with public constructor
+- for both request
+- and response
 # documentation, difference between:
 - rest/response
 - with/without jackson annotations on dto
+- from enum, ways
 # api get, server
 # api post, options, server
 # api put, options, server

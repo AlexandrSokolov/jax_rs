@@ -1,0 +1,6 @@
+{
+  "enumAsPlainJava" : {
+    "unit" : "mm",
+    "meters" : 0.001
+  }
+}

@@ -2,7 +2,7 @@ package com.savdev.jax.rs.resteasy.server.service;
 
 
 import com.savdev.jax.rs.resteasy.api.JaxRsGet;
-import com.savdev.jax.rs.resteasy.dto.DtoGettersSettersWithoutJackson;
+import com.savdev.jax.rs.resteasy.dto.without.jackson.DtoGettersSettersWithoutJackson;
 
 public class JaxRsGetService implements JaxRsGet {
 
