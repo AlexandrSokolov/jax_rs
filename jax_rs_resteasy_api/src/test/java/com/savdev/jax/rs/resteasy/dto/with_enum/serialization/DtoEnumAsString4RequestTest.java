@@ -1,10 +1,10 @@
 package com.savdev.jax.rs.resteasy.dto.with_enum.serialization;
 
 import com.savdev.jax.rs.resteasy.client.filter.RequestResponseInfo;
+import com.savdev.jax.rs.resteasy.dto.with_enum.DistanceEnumAsPlainJava;
 import com.savdev.jax.rs.resteasy.dto.with_enum.serialization.dto.DtoEnumAsString;
 import com.savdev.jax.rs.resteasy.dto.with_enum.serialization.dto.DtoEnumAsStringWithJson;
 import com.savdev.jax.rs.resteasy.dto.with_enum.serialization.enums.DistanceEnumAsJsonString;
-import com.savdev.jax.rs.resteasy.dto.with_enum.DistanceEnumAsPlainJava;
 import org.junit.Assert;
 import org.junit.Test;
 

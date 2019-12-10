@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import static com.savdev.jax.rs.resteasy.dto.TestUtils.OBJECT_MAPPER;
 import static com.savdev.jax.rs.resteasy.dto.with_enum.serialization.DtoEnumAsJsonObjectTest.ENUM_AS_JSON_OBJECT_FILE;
-import static com.savdev.jax.rs.resteasy.dto.with_enum.serialization.DtoEnumAsString4RequestTest.ENUM_AS_STRING_FILE;
 
 public class DtoEnumAsJsonObject4ResponseTest {
 

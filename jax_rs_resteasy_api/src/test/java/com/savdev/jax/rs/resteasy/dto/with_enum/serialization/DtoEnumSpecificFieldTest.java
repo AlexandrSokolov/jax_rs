@@ -1,8 +1,8 @@
 package com.savdev.jax.rs.resteasy.dto.with_enum.serialization;
 
 import com.savdev.jax.rs.resteasy.client.filter.RequestResponseInfo;
-import com.savdev.jax.rs.resteasy.dto.with_enum.serialization.dto.DtoEnumSpecificField;
 import com.savdev.jax.rs.resteasy.dto.with_enum.DistanceEnumSpecificField;
+import com.savdev.jax.rs.resteasy.dto.with_enum.serialization.dto.DtoEnumSpecificField;
 import org.junit.Assert;
 import org.junit.Test;
 
