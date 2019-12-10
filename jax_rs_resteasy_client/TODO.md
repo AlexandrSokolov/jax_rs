@@ -1,3 +1,4 @@
+- update docs how to enable logging (in tests and wildfly)
 - forwarding from another response
 ```
       String fileName = program.right().get()._1;

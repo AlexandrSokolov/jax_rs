@@ -1,6 +1,3 @@
-# Deserializing JSON to Enum
-https://www.baeldung.com/jackson-serialize-enums
-https://stackoverflow.com/questions/12468764/jackson-enum-serializing-and-deserializer
 # DtoWithBuilderWithoutJackson 
 - with public constructor
 - for both request
