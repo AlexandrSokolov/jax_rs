@@ -2,16 +2,17 @@
 
 Jax Rs Client simplifies dev and reduces maintenance effort. 
 
-## Features
+## Features:
 
-1. [Server error response processing simplification.1](#Usage-by-REST-API-provider)
-1. [Server error response processing simplification.2](##Usage-by-REST-API-provider)
-2. DTO deserialization from a response error processing simplification.
-3. Request/response debugging
-4. Marking unknown fields as not mandatory.
-5. Money (BigDecimal) format providing.
-6. Authentication simplification (basic, 2-factor with caching).
-7. Simple way to change a default behaviour providing.
+1. [Server error response processing simplification.1](#1.-Server-error-response-processing-simplification.)
+2. [DTO deserialization from a response error processing simplification.](#2.-DTO-deserialization-error.)
+3. [Request/response debugging](#3-requestresponse-debugging-we-can-always-enable-debug-mode-per)
+4. [Marking unknown fields as not mandatory.](#4-marking-unknown-fields-as-not-mandatory)
+5. [Money (BigDecimal) format providing.](#5-java-bigdecimal-formatting)
+6. [Authentication simplification (basic, 2-factor with caching).](#6-authentication)
+7. [Simple way to change a default behaviour providing.](#7-the-default-behaviour-customisation)
+
+[How service owner can expose the rest client to the consumers.](#Usage-by-REST-API-provider)
 
 ## Usage by client
 
@@ -28,7 +29,8 @@ You can get this error in the exception handler as:
 ``` 
 See [JaxRsProxyConfigErrorTest#testNotFoundWithTextResponseBodyViaJaxRsExceptionsUtils](src/test/java/com/savdev/jax/rs/resteasy/client/error/JaxRsProxyConfigErrorTest.java)
 
-##### 2. Having a DTO deserialization error from a response, we can get all information about request/response.
+##### 2. DTO deserialization error.
+Having a DTO deserialization error from a response, we can get all information about request/response.
 In case you want to see, how response looks like, you can use the solution, described above:
 ```
     } catch (Exception e){
@@ -53,18 +55,24 @@ In the log, you'll get:
 * per all requests (enable debug for `org.apache.http`)
 ![Debug messages per each apache http request][all requests shown]
 
-##### 4. If server sends us a new field, it is not marked as an error. If you want to override this behaviour, create it as:
+##### 4. Marking unknown fields as not mandatory.
+If server sends us a new field, it is not marked as an error. If you want to override this behaviour, create it as:
 ```
       JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
         .objectMapperConsumer(om -> om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true));
 ```
 See [CustomOmUnknownPropertiesTest](src/test/java/com/savdev/jax/rs/resteasy/client/custom_object_mapping/CustomOmUnknownPropertiesTest.java)
 
-##### 5. Java BigDecimal type is sent as "dddd.dd".
+##### 5. Java BigDecimal formatting
+
+Java BigDecimal type is sent as "dddd.dd".
  
 For instance 123 becomes "123.00". If you want to override it, create a custom serializer. See below an example.
 
-##### 6. Authentication. It is implemented through providing factory methods for ClientRequestFilter. At this moment the following types of authentication supported:
+##### 6. Authentication. 
+
+It is implemented through providing factory methods for ClientRequestFilter. At this moment the following types of authentication supported:
+
 * Basic authentication:
 ```
     JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
@@ -98,7 +106,7 @@ How jwtPasswordBasedWithCache could be implemented:
 
 See [AuthJwt2FactorsTest](src/test/java/com/savdev/jax/rs/resteasy/client/auth_2factor/AuthJwt2FactorsTest.java)
 
-##### 7. You can always adopt the default behaviour for your needs:
+##### 7. The default behaviour customisation:
 Custom serializer and deserializer:
 ```
     JaxRsProxyConfig proxyConfig = JaxRsProxyConfig.instance(URI.toString())
