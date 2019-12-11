@@ -6,6 +6,7 @@
 - rest/response
 - with/without jackson annotations on dto
 - from enum, ways
+https://fcs.adm.brandmaker.net/docs/api/index.html
 # api get, server
 # api post, options, server
 # api put, options, server

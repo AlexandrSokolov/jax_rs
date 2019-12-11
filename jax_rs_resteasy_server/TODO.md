@@ -31,3 +31,8 @@
 - wildfly light to start it FROM maven having only war file
 - remove deprecated jax-rs based projects  
 # caching, options
+# http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http
+# http://softwareengineering.stackexchange.com/questions/141410/restful-state-changing-actions
+http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
+http://stackoverflow.com/questions/1619152/how-to-create-rest-urls-without-verbs
+https://jira4.brandmaker.com/confluence/display/2DEV/RESTful+API+Design+Guide
