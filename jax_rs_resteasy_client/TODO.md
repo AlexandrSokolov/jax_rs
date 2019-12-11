@@ -1,5 +1,5 @@
-- update docs how to enable logging (in tests and wildfly)
-update internal documentation
+- enable org.apache.http for the whole system 
+- update internal documentation in JaxRs and Wildfly pages
 - forwarding from another response
 ```
       String fileName = program.right().get()._1;

@@ -14,6 +14,8 @@ Jax Rs Client simplifies dev and reduces maintenance effort.
 
 [How service owner can expose the rest client to the consumers.](#Usage-by-REST-API-provider)
 
+[Enable debug level in different environments](#Enable-debug-mode)
+
 ## Usage by client
 
 ##### 1. Server error response processing simplification. 
@@ -158,6 +160,39 @@ Consumer is responsible only for setting domain and authentication:
 
 See [ProvideConfigTest](src/test/java/com/savdev/jax/rs/resteasy/client/provide_config/ProvideConfigTest.java)
 
+## Enable debug mode
+
+##### in unit tests:
+```
+//Note: You must apply in the @BeforeClass method
+System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
+//To enable only package:
+System.setProperty("org.apache.commons.logging.simplelog.log.com.savdev.jax.rs.resteasy.client.filter", "DEBUG");
+//To enable org.apache.http package:
+System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.http", "DEBUG");
+```
+
+##### in Wildfly through command line:
+```
+sudo -i
+$ jboss-cli 
+# or the full path
+/fullPath/jboss-cli.sh --connect --controller=127.0.0.1:19990
+/subsystem=logging/logger=com.savdev.jax.rs.resteasy.client.filter:add
+/subsystem=logging/logger=com.savdev.jax.rs.resteasy.client.filter:write-attribute(name="level", value="DEBUG")
+/subsystem=logging/logger=com.savdev.jax.rs.resteasy.client.filter:assign-handler(name="FILE")
+/subsystem=logging:read-resource
+
+```
+##### in Wildfly through standalone-full.xml file:
+```
+    <profile>
+        <subsystem xmlns="urn:jboss:domain:logging:3.0">
+            ...
+            <logger category="com.savdev.jax.rs.resteasy.client.filter">
+                <level name="DEBUG"/>
+            </logger>
+```
 
 [response error]: docs/images/ErrorHandlingFilter.jpg "Server Response Error"
 [debug message]: docs/images/RequestResponseLogFilter.jpg "Debug Message"
