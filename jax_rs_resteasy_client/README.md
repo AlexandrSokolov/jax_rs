@@ -4,7 +4,8 @@ Jax Rs Client simplifies dev and reduces maintenance effort.
 
 ## Features
 
-1. Server error response processing simplification.
+1. [Server error response processing simplification.1](#Usage-by-REST-API-provider)
+1. [Server error response processing simplification.2](##Usage-by-REST-API-provider)
 2. DTO deserialization from a response error processing simplification.
 3. Request/response debugging
 4. Marking unknown fields as not mandatory.
@@ -14,7 +15,9 @@ Jax Rs Client simplifies dev and reduces maintenance effort.
 
 ## Usage by client
 
-##### 1. Server error response processing simplification. In case a server returns 4xx or 5xx response code, in the log file we always see all information about the request and the response data.
+##### 1. Server error response processing simplification. 
+
+In case a server returns 4xx or 5xx response code, in the log file we always see all information about the request and the response data.
 ![Error Message][response error]
 
 You can get this error in the exception handler as:
