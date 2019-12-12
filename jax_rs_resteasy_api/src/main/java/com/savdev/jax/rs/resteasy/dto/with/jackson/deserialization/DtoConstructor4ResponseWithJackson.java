@@ -26,7 +26,8 @@ public class DtoConstructor4ResponseWithJackson {
   private boolean booleanPrimitiveValue;
   private Boolean booleanObjectValue;
 
-
+  //since java8, you can avoid using the @com.fasterxml.jackson.annotation.JsonCreator annotation
+  //@JsonCreator
   public DtoConstructor4ResponseWithJackson(
     @JsonProperty("stringValue") String stringValue,
     @JsonProperty("intValue") int intValue,

@@ -1,5 +1,3 @@
-- enable org.apache.http for the whole system 
-- update internal documentation in JaxRs and Wildfly pages
 - forwarding from another response
 ```
       String fileName = program.right().get()._1;
