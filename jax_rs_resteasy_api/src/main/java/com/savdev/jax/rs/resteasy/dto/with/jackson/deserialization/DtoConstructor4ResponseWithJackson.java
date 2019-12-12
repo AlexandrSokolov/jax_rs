@@ -30,8 +30,8 @@ public class DtoConstructor4ResponseWithJackson {
   //@JsonCreator
   public DtoConstructor4ResponseWithJackson(
     @JsonProperty("stringValue") String stringValue,
-    @JsonProperty("intValue") int intValue,
-    @JsonProperty("longValue") long longValue,
+    @JsonProperty("withIntValue") int intValue,
+    @JsonProperty("withLongValue") long longValue,
     @JsonProperty("floatValue") float floatValue,
     @JsonProperty("doubleValue") double doubleValue,
     @JsonProperty("bigDecimalValue") BigDecimal bigDecimalValue,

@@ -1,7 +1,3 @@
-# DtoWithBuilderWithoutJackson 
-- with public constructor
-- for both request
-- and response
 # documentation, difference between:
 - rest/response
 - with/without jackson annotations on dto
@@ -19,4 +15,5 @@ https://fcs.adm.brandmaker.net/docs/api/index.html
 - docs generation, which are visible in git
   swagger
 https://github.com/docker/labs/blob/master/developer-tools/java/chapters/ch02-basic-concepts.adoc
-
+- advanced features: https://www.baeldung.com/jackson-advanced-annotations
+- 
