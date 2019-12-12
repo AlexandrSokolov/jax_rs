@@ -1,5 +1,6 @@
 package com.savdev.jax.rs.resteasy.dto.with.jackson.deserialization;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
@@ -30,8 +31,8 @@ public class DtoConstructor4ResponseWithJackson {
   //@JsonCreator
   public DtoConstructor4ResponseWithJackson(
     @JsonProperty("stringValue") String stringValue,
-    @JsonProperty("withIntValue") int intValue,
-    @JsonProperty("withLongValue") long longValue,
+    @JsonProperty("intValue") int intValue,
+    @JsonProperty("longValue") long longValue,
     @JsonProperty("floatValue") float floatValue,
     @JsonProperty("doubleValue") double doubleValue,
     @JsonProperty("bigDecimalValue") BigDecimal bigDecimalValue,
