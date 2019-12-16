@@ -2,6 +2,7 @@ package com.savdev.jax.rs.resteasy.server.config;
 
 import com.google.common.collect.Sets;
 import com.savdev.jax.rs.resteasy.server.service.JaxRsGetService;
+import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -26,6 +27,8 @@ public class JaxRsConfiguration extends Application {
 
   @Override
   public Set<Class<?>> getClasses() {
-    return Sets.newHashSet(JaxRsGetService.class);
+    return Sets.newHashSet(
+      JaxRsGetService.class,
+      OpenApiResource.class);
   }
 }

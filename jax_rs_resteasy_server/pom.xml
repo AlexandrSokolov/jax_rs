@@ -20,8 +20,6 @@
 
     <resteasy_api.version>1.0.0</resteasy_api.version>
 
-
-
   </properties>
 
   <dependencies>
@@ -33,6 +31,10 @@
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-jaxrs2</artifactId>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>

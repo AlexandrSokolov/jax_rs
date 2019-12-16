@@ -1,6 +1,15 @@
+# document docs:
+http://localhost:8080/appContext/appPath/openapi.json
+http://localhost:8080/appContext/appPath/openapi.yaml
 # jetty with wildfly
 # test with wildfly/arquillian
 # jetty debug mode
+# jetty integration tests:
+https://github.com/swagger-api/swagger-samples/blob/2.0/java/java-resteasy-configfile/pom.xml
+# swagger without authentication:
+https://stackoverflow.com/questions/37671125/how-to-configure-spring-security-to-allow-swagger-url-to-be-accessed-without-aut/37683455#37683455
+
+
 1. configuration
 2. get rest interface
 3. integration test with arquillian

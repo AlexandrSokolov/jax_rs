@@ -24,6 +24,6 @@ public interface JaxRsGet {
    * @return
    */
   @GET
-  @Path("{id : \\d+}") //support digit only
+  @Path("/{id : \\d+}") //support digit only
   DtoGettersSettersWithoutJackson findById(@PathParam("id") long id);
 }
