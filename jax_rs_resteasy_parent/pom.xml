@@ -28,6 +28,7 @@
     <junit.version>4.12</junit.version>
     <mockito.version>3.2.0</mockito.version>
 
+    <jetty.version>9.4.24.v20191120</jetty.version>
   </properties>
 
   <dependencyManagement>
@@ -123,6 +124,44 @@
         <scope>test</scope>
       </dependency>
     </dependencies>
+
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+          <version>${jetty.version}</version>
+          <configuration>
+            <!--
+              Redeploy every 10 seconds if changes are detected,
+              0 for no automatic redeployment
+            -->
+            <scanIntervalSeconds>10</scanIntervalSeconds>
+            <!-- reload manually by hitting enter on console -->
+            <reload>manual</reload>
+            <webApp>
+              <contextPath>/appContext</contextPath>
+            </webApp>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.glassfish.jersey.containers</groupId>
+              <artifactId>jersey-container-servlet</artifactId>
+              <version>2.21</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
+            <dependency>
+              <groupId>org.glassfish.jersey.media</groupId>
+              <artifactId>jersey-media-json-jackson</artifactId>
+              <version>2.29.1</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
 </project>

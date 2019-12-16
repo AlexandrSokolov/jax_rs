@@ -1,6 +1,12 @@
+# jetty with wildfly
+# test with wildfly/arquillian
+# jetty debug mode
 1. configuration
 2. get rest interface
 3. integration test with arquillian
+4. test with jetty
+https://github.com/swagger-api/swagger-samples/tree/2.0/java/java-resteasy-configfile
+https://docs.jboss.org/weld/reference/3.0.0.CR2/en-US/html/gettingstarted.html#_deploying_to_jetty
 4. junit test
 5. serialization/deserialation
 - server filters

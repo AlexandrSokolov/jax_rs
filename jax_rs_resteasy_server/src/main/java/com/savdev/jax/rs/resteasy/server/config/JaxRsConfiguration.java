@@ -22,7 +22,7 @@ public class JaxRsConfiguration extends Application {
 
   //see src/main/webapp/WEB-INF/jboss-web.xml
   public static final String CONTEXT_ROOT = "/appContext";
-  public static final String APPLICATION_PATH = "/rest";
+  public static final String APPLICATION_PATH = "/appPath";
 
   @Override
   public Set<Class<?>> getClasses() {
