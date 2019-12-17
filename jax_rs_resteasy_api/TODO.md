@@ -1,14 +1,5 @@
 - docs generation, which are visible in git
-  swagger
-  https://github.com/swagger-api/swagger-core
-  https://github.com/swagger-api/swagger-core/wiki
-  https://stackoverflow.com/questions/29029495/generate-rest-api-documentation/33669242#33669242
-  
-  open api
-  
-  Swagger vs OpenAPI
-  https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/
-  
+
   enunciate
   https://github.com/stoicflame/enunciate/wiki
   
@@ -28,7 +19,20 @@
   
   https://stackoverflow.com/questions/29029495/generate-rest-api-documentation/33669242
   
+  Swagger UI
+  https://github.com/swagger-api/swagger-ui
+  https://medium.com/shark-bytes/co-hosting-swagger-ui-with-your-jersey-rest-api-using-maven-dependencies-44d88ae85bf8
+  https://stackoverflow.com/questions/49598003/configure-swagger-ui-with-maven
   
+  Validations in rest docs
+  Formats in rest docs
+  
+  Swagger Tools:
+  https://swagger.io/blog/api-strategy/difference-between-swagger-and-openapi/
+  
+  Different ways to understand if you covered all:
+  https://stackoverflow.com/questions/29029495/generate-rest-api-documentation/33669242#33669242  
+
 # documentation, difference between:
 
 - rest/response

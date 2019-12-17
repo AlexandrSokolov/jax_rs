@@ -1,6 +1,26 @@
 # document docs:
-http://localhost:8080/appContext/appPath/openapi.json
-http://localhost:8080/appContext/appPath/openapi.yaml
+swagger:
+configuration (custom file, adding in the applictiaon)
+urls ()
+http://localhost:18181/appContext/appPath/openapi.json
+http://localhost:18181/appContext/appPath/get/100
+annotations
+leave a link:
+https://github.com/swagger-api/swagger-core/wiki
+
+# jetty debugging
+<jvmArgs>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8787</jvmArgs>-->
+https://stackoverflow.com/questions/2007192/how-to-control-vm-arguments-for-maven-jetty-plugin
+https://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin
+# jetty request logging
+<requestLog>org.eclipse.jetty.server.NCSARequestLog</requestLog>
+with logback
+            <dependency>
+              <groupId>ch.qos.logback</groupId>
+              <artifactId>logback-classic</artifactId>
+              <version>1.2.3</version>
+            </dependency>
+https://stackoverflow.com/questions/7168214/configure-logging-for-jettys-maven-plugin
 # jetty with wildfly
 # test with wildfly/arquillian
 # jetty debug mode
@@ -51,3 +71,8 @@ https://docs.jboss.org/weld/reference/3.0.0.CR2/en-US/html/gettingstarted.html#_
 http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
 http://stackoverflow.com/questions/1619152/how-to-create-rest-urls-without-verbs
 https://jira4.brandmaker.com/confluence/display/2DEV/RESTful+API+Design+Guide
+https://stackoverflow.com/questions/3459795/how-to-choose-between-jersey-apache-wink-and-jboss-resteasy/10922135#10922135
+
+# swagger annotations:
+https://github.com/swagger-api/swagger-core/wiki/Swagger-2.X---Annotations
+#

@@ -1,0 +1,13 @@
+prettyPrint: true
+cacheTTL: 0
+openAPI:
+  info:
+    version: '1.0'
+    title: Swagger Config File
+    description: 'This is a test server.'
+    termsOfService: http://savdev.com/terms/
+    contact:
+      email: sav.public@yandex.com
+    license:
+      name: Apache 2.0
+      url: http://www.apache.org/licenses/LICENSE-2.0.html
