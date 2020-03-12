@@ -11,6 +11,7 @@ import com.savdev.jax.rs.resteasy.client.filter.ErrorHandlingFilter;
 import com.savdev.jax.rs.resteasy.client.filter.RequestResponseLogFilter;
 import com.savdev.jax.rs.resteasy.client.jackson.JacksonProvider;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
 import javax.ws.rs.client.Client;
@@ -25,6 +26,10 @@ import java.util.function.Supplier;
 public class JaxRsProxyConfig {
 
   public static final String DOMAIN_NOT_SET = "Cannot create proxy. Domain is not specified.";
+  public static final String DOMAIN_WRONG = "Cannot create proxy. Domain '%s' is not a correct url. " +
+    "Please make sure it contains a correct protocol like 'http' (or other valid ones).";
+
+  private final static UrlValidator urlValidator = new UrlValidator(UrlValidator.ALLOW_LOCAL_URLS);
 
   private final JacksonProvider jacksonProvider = JacksonProvider.instance();
 
@@ -43,6 +48,9 @@ public class JaxRsProxyConfig {
   }
 
   public JaxRsProxyConfig domain(String domain){
+    if (!urlValidator.isValid(domain)){
+      throw new IllegalStateException(String.format(DOMAIN_WRONG, domain));
+    }
     this.domain = domain;
     return this;
   }
@@ -104,6 +112,9 @@ public class JaxRsProxyConfig {
   }
 
   private JaxRsProxyConfig(String domain) {
+    if (!urlValidator.isValid(domain)){
+      throw new IllegalStateException(String.format(DOMAIN_WRONG, domain));
+    }
     this.domain = domain;
   }
 
